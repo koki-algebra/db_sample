@@ -7,11 +7,11 @@ USER := user
 PASSWORD := password
 
 run: ## Run database
-	@docker compose down
+	@make clear
 	@docker compose up -d
 
 clear: ## Clear containers
-	@docker compose down
+	@docker compose down --volumes
 
 psql: ## Login PostgreSQL
 	@docker exec -it postgres psql -U $(USER) -h localhost $(DATABASE)
