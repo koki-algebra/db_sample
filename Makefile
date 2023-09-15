@@ -13,11 +13,11 @@ run: ## Run database
 clear: ## Clear containers
 	@docker compose down
 
-psql:
+psql: ## Login PostgreSQL
 	@docker exec -it postgres psql -U $(USER) -h localhost $(DATABASE)
 
 mysql: ## Login MySQL
-	@docker exec -it mysql mysql --user=$(USER) --password=$(PASSWORD) --host=localhost $(DATABASE)
+	@docker exec -it mysql mysql --user=$(USER) --host=localhost $(DATABASE) -p
 
 help: ## Show help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
