@@ -14,10 +14,10 @@ clear: ## Clear containers
 	@docker compose down --volumes
 
 psql: ## Login PostgreSQL
-	@docker exec -it postgres psql -U $(USER) -h localhost $(DATABASE)
+	@psql --host localhost --username $(USER) --dbname $(DATABASE) --password
 
 mysql: ## Login MySQL
-	@docker exec -it mysql mysql --user=$(USER) --host=localhost $(DATABASE) -p
+	@mysql --protocol TCP --host localhost --user $(USER) --database $(DATABASE) --password
 
 help: ## Show help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
