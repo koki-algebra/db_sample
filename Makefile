@@ -4,7 +4,6 @@
 # environment variables
 DATABASE := app
 USER := user
-PASSWORD := password
 
 run: ## Run database
 	@make clear
